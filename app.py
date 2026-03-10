@@ -28,7 +28,9 @@ def ask_llm(user_input, expert_type):
 
     # LLMの初期化
     llm = ChatOpenAI(
-        model_name="gpt-4o-mini",
+        #model_name="gpt-4o-mini",
+        model="gpt-4o-mini",
+        api_key=st.secrets["OPENAI_API_KEY"],
         temperature=0
     )
 
@@ -39,7 +41,8 @@ def ask_llm(user_input, expert_type):
     ]
 
     # LLM実行
-    result = llm(messages)
+    #result = llm(messages)
+    result = llm.invoke(messages)
 
     return result.content
 
